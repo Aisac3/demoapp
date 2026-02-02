@@ -24,8 +24,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Simulate Kubernetes deployment
+      - name: Install Ansible
         run: |
-          echo "Applying Kubernetes manifests..."
-          ls k8s
+          sudo apt update
+          sudo apt install -y ansible
+
+      - name: Run Ansible playbook
+        run: |
+          ansible-playbook ansible/setup.yml
+
 
