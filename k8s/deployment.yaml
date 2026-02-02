@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-python-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-python
+  template:
+    metadata:
+      labels:
+        app: simple-python
+    spec:
+      containers:
+        - name: simple-python-container
+          image: simple-python-app
+          imagePullPolicy: Never
+          env:
+            - name: FAIL_APP
+              value: "true"
+
