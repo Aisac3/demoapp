@@ -5,8 +5,8 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # 3. Copy app code into container
-COPY app/doesnotexist.py .
-
+#COPY app/doesnotexist.py .
+COPY app/app.py .
 
 # 4. Run the application
 CMD ["python", "app.py"]
