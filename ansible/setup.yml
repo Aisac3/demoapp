@@ -1,0 +1,24 @@
+---
+- name: Prepare local system for Kubernetes workloads
+  hosts: localhost
+  connection: local
+  become: false
+
+  tasks:
+    - name: Check Docker installation
+      command: docker --version
+      register: docker_output
+      ignore_errors: true
+
+    - name: Print Docker version
+      debug:
+        msg: "{{ docker_output.stdout }}"
+
+    - name: Check kubectl installation
+      command: kubectl version --client
+      register: kubectl_output
+      ignore_errors: true
+
+    - name: Print kubectl version
+      debug:
+        msg: "{{ kubectl_output.stdout }}"
